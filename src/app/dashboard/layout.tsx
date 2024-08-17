@@ -9,15 +9,17 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="flex flex-row bg-background w-svw">
-      <section id="sidebar" className="min-h-svh w-1/5">
+    <main className="flex flex-row">
+      <section id="sidebar" className="bg-muted min-h-svh w-1/5">
         <Sidebar />
       </section>
       <div className="w-4/5">
         <section id="header">
           <Header />
         </section>
-        <section id="content">{children}</section>
+        <section id="content" className="p-6 ">
+          {children}
+        </section>
       </div>
     </main>
   );
