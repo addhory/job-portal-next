@@ -1,7 +1,9 @@
-import React, { FC, useState } from "react";
-import DialogAddBenefit from "./DialogAddBenefit";
-import { FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { PartyPopper, X } from "lucide-react";
+import React, { FC, useState } from "react";
+
+import { FormField, FormItem, FormMessage } from "@/components/ui/form";
+
+import DialogAddBenefit from "./DialogAddBenefit";
 
 interface InputBenefitsProps {
   form: any;
@@ -50,7 +52,7 @@ const InputBenefits: FC<InputBenefitsProps> = ({ form }) => {
       <FormField
         control={form.control}
         name="benefits"
-        render={({ field }) => (
+        render={({ field: _field }) => (
           <FormItem>
             <FormMessage />
           </FormItem>

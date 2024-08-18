@@ -25,3 +25,25 @@ export const JOB_TYPE_OPTIONS = [
     value: JOB_TYPES[3],
   },
 ];
+
+export const JOB_LISTING_COL: string[] = [
+  "Roles",
+  "Status",
+  "Date Posted",
+  "Due Date",
+  "Job Type",
+  "Applicants",
+  "Needs",
+];
+
+export const JOB_LISTING_DATA = [
+  {
+    roles: "Software Engineer",
+    status: "Live",
+    datePosted: "12 Aug 2023",
+    dueDate: "12 Sep 2023",
+    jobType: "FULL_TIME",
+    applicants: 1,
+    needs: 10,
+  },
+];

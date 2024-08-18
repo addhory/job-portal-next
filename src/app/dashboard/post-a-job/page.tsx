@@ -1,5 +1,14 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowLeftIcon, Loader2 } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { jobFormSchema } from "@/lib/form-schema";
+import { JOB_TYPE_OPTIONS } from "@/constants";
+
 import { TCustomEditorProps } from "@/components/molecules/CKEditor";
 import FieldInput from "@/components/molecules/FieldInput";
 import InputBenefits from "@/components/molecules/InputBenefits";
@@ -24,13 +33,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { JOB_TYPE_OPTIONS } from "@/constants";
-import { jobFormSchema } from "@/lib/form-schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowLeftIcon, Loader2 } from "lucide-react";
-import dynamic from "next/dynamic";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 const CustomEditor = dynamic<TCustomEditorProps>(
   () => import("@/components/molecules/CKEditor"),

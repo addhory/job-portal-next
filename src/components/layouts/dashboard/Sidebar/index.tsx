@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
 import {
   BriefcaseBusinessIcon,
   BuildingIcon,
@@ -9,59 +10,62 @@ import {
   SettingsIcon,
   UsersIcon,
 } from "lucide-react";
-import React from "react";
+import Link from "next/link";
+import React, { ReactNode } from "react";
 
-type Props = {};
+import { Button } from "@/components/ui/button";
 
-const Sidebar = (props: Props) => {
+const SIDEBAR_MENU: { link?: string; name: string; icon: ReactNode }[] = [
+  {
+    link: "/dashboard",
+    name: "Home",
+    icon: <HomeIcon className="mr-2" />,
+  },
+  {
+    link: "/dashboard/messages",
+    name: "Messages",
+    icon: <MailIcon className="mr-2" />,
+  },
+  {
+    link: "/dashboard/company-profile",
+    name: "Company Profile",
+    icon: <BuildingIcon className="mr-2" />,
+  },
+  {
+    link: "/dashboard/applicants",
+    name: "All Applicants",
+    icon: <UsersIcon className="mr-2" />,
+  },
+  {
+    link: "/dashboard/job-listings",
+    name: "Job Listings",
+    icon: <BriefcaseBusinessIcon className="mr-2" />,
+  },
+  {
+    link: "/dashboard/my-schedule",
+    name: "My Schedule",
+    icon: <CalendarDaysIcon className="mr-2" />,
+  },
+];
+
+const Sidebar = () => {
   return (
     <div className="h-full">
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <h2 className="mb-4 px-4 text-xl font-bold">Dashboard</h2>
           <div className="space-y-3">
-            <Button
-              variant={"ghost"}
-              className="w-full justify-start rounded-none hover:text-primary"
-            >
-              <HomeIcon className="mr-2" />
-              Home
-            </Button>
-            <Button
-              variant={"ghost"}
-              className="w-full justify-start rounded-none  hover:text-primary"
-            >
-              <MailIcon className="mr-2 " />
-              Messages
-            </Button>
-            <Button
-              variant={"ghost"}
-              className="w-full justify-start rounded-none  hover:text-primary"
-            >
-              <BuildingIcon className="mr-2 " />
-              Company Profile
-            </Button>
-            <Button
-              variant={"ghost"}
-              className="w-full justify-start rounded-none  hover:text-primary"
-            >
-              <UsersIcon className="mr-2 " />
-              All Applicants
-            </Button>
-            <Button
-              variant={"ghost"}
-              className="w-full justify-start rounded-none  hover:text-primary"
-            >
-              <BriefcaseBusinessIcon className="mr-2 " />
-              Job Listings
-            </Button>
-            <Button
-              variant={"ghost"}
-              className="w-full justify-start rounded-none  hover:text-primary"
-            >
-              <CalendarDaysIcon className="mr-2 " />
-              My Schedule
-            </Button>
+            {SIDEBAR_MENU.map((item, idx) => (
+              <Link href={`${item.link}`} key={idx} className="block">
+                <Button
+                  variant={"ghost"}
+                  className="w-full justify-start rounded-none hover:text-primary"
+                >
+                  {item.icon}
+                  {item.name}
+                </Button>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
+import { Metadata } from "next";
+
 import Header from "@/components/layouts/dashboard/Header";
 import Sidebar from "@/components/layouts/dashboard/Sidebar";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Dashboard | Job Portal",

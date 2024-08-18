@@ -1,5 +1,6 @@
-import { JOB_TYPES } from "@/constants";
 import { z } from "zod";
+
+import { JOB_TYPES } from "@/constants";
 
 export const jobFormSchema = z.object({
   roles: z

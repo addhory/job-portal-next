@@ -1,19 +1,20 @@
+import { PlusIcon, XIcon } from "lucide-react";
+import React, { createRef, useState } from "react";
+import { UseFormReturn } from "react-hook-form";
+import { z } from "zod";
+
+import { jobFormSchema } from "@/lib/form-schema";
+import { cn } from "@/lib/utils";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { jobFormSchema } from "@/lib/form-schema";
-import { cn } from "@/lib/utils";
-import { PlusIcon, XIcon } from "lucide-react";
-import React, { createRef, useState } from "react";
-import { UseFormReturn } from "react-hook-form";
-import { z } from "zod";
 
 type Props = {
   form: UseFormReturn<z.infer<typeof jobFormSchema>>;
@@ -52,7 +53,7 @@ const InputSkills = ({ form }: Props) => {
     <FormField
       control={form.control}
       name="requiredSkills"
-      render={({ field }) => (
+      render={() => (
         <FormItem className="block w-2/4">
           <FormControl>
             <>

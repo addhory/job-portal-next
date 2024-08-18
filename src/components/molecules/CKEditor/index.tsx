@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+import React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
+
 import { jobFormSchema } from "@/lib/form-schema";
+
 import { FormField, FormItem, FormMessage } from "@/components/ui/form";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export type TCustomEditorProps = {
   form: UseFormReturn<z.infer<typeof jobFormSchema>>;
@@ -27,7 +29,7 @@ const CustomEditor = ({ form, name }: TCustomEditorProps) => {
       <FormField
         control={form.control}
         name={name}
-        render={({ field }) => {
+        render={({ field: _field }) => {
           return (
             <FormItem>
               <FormMessage className="mt-3" />

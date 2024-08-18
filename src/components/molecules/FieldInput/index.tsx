@@ -1,5 +1,6 @@
-import { Separator } from "@/components/ui/separator";
 import React, { ReactNode } from "react";
+
+import { Separator } from "@/components/ui/separator";
 
 type Props = {
   children: ReactNode;
