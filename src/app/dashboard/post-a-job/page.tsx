@@ -51,15 +51,6 @@ export default function Page() {
     defaultValues: {
       requiredSkills: [],
       benefits: [],
-      categoryId: "",
-      jobDescription: "",
-      jobType: "",
-      niceToHaves: "",
-      responsibility: "",
-      roles: "",
-      salaryForm: "",
-      salaryTo: "",
-      whoYouAre: "",
     },
   });
 

@@ -8,32 +8,60 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusIcon } from "lucide-react";
 import React, { useRef } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 interface Props {
   updateBenefits: (item: any) => void;
 }
 
+const formSchema = z.object({
+  benefit: z
+    .string({ required_error: "Benefit is required" })
+    .min(3, "Min 3 characters"),
+  description: z
+    .string({ required_error: "Description is required" })
+    .min(10, "Min 10 characters"),
+});
+
+type TBenefitForm = z.infer<typeof formSchema>;
+
 export default function DialogAddBenefit({ updateBenefits }: Props) {
-  const benefitRef = useRef<HTMLInputElement>(null);
-  const descriptionRef = useRef<HTMLTextAreaElement>(null);
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<TBenefitForm>({
+    resolver: zodResolver(formSchema),
 
-  const handleSaveBenefit = () => {
-    const benefit = benefitRef.current?.value;
-    const description = descriptionRef.current?.value;
+    defaultValues: {},
+  });
+  const handleSaveBenefit = (data: TBenefitForm) => {
+    // const benefit = benefitRef.current?.value;
+    // const description = descriptionRef.current?.value;
 
-    if (benefit === "" || description === "") {
-      return;
-    }
+    // if (benefit === "" || description === "") {
+    //   return;
+    // }
 
     updateBenefits({
-      benefit,
-      description,
+      benefit: data.benefit,
+      description: data.description,
     });
+    reset();
   };
 
   return (
@@ -52,25 +80,51 @@ export default function DialogAddBenefit({ updateBenefits }: Props) {
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-8 mb-5">
-          <div>
-            <Label htmlFor="benefit">Benefit</Label>
-            <Input
-              id="benefit"
-              placeholder="fill your benefit..."
-              ref={benefitRef}
-            />
-          </div>
-          <div>
-            <Label htmlFor="description">Description</Label>
-            <Textarea
-              id="description"
-              placeholder="fill your description..."
-              ref={descriptionRef}
-            />
-          </div>
+          <FormField
+            control={control}
+            name="benefit"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Benefit</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter benefit"
+                    {...field}
+                    error={errors?.benefit?.message}
+                  />
+                </FormControl>
+
+                {errors?.benefit && (
+                  <FormMessage>{errors.benefit?.message}</FormMessage>
+                )}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Benefit</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Enter description"
+                    autoComplete="false"
+                    error={errors?.description?.message}
+                    {...field}
+                  />
+                </FormControl>
+
+                {errors?.description && (
+                  <FormMessage>{errors.description?.message}</FormMessage>
+                )}
+              </FormItem>
+            )}
+          />
         </div>
         <DialogFooter>
-          <Button type="button" onClick={handleSaveBenefit}>
+          <Button type="button" onClick={handleSubmit(handleSaveBenefit)}>
             Save
           </Button>
         </DialogFooter>
