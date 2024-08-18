@@ -16,13 +16,13 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {
             "border-red-500": error,
           },
-          className
+          className,
         )}
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
 Textarea.displayName = "Textarea";
 

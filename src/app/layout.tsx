@@ -25,7 +25,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-svh bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <NextTopLoader color="#2563EB" />

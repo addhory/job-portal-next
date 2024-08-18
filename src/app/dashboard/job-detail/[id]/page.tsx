@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import Applicants from "@/components/molecules/Applicants";
+import JobDetail from "@/components/molecules/JobDetail";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -25,21 +27,21 @@ export default function Page() {
   return (
     <>
       <div className="inline-flex flex-col gap-5 mb-5">
-        <Breadcrumb separator>
+        <Breadcrumb>
           <BreadcrumbList>
             {BREADCRUMB_ITEM.map((item: any, idx) => (
-              <>
-                <BreadcrumbItem key={item.name + idx}>
-                  <BreadcrumbLink asChild>
-                    {item?.href ? (
+              <BreadcrumbItem key={item.name + idx}>
+                {item?.href ? (
+                  <>
+                    <BreadcrumbLink asChild>
                       <Link href={`${item.href}`}>{item.title}</Link>
-                    ) : (
-                      <BreadcrumbPage>{item?.title}</BreadcrumbPage>
-                    )}
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                {!item?.isLastItem && <BreadcrumbSeparator />}
-              </>
+                    </BreadcrumbLink>
+                    <BreadcrumbSeparator />
+                  </>
+                ) : (
+                  <BreadcrumbPage>{item?.title}</BreadcrumbPage>
+                )}
+              </BreadcrumbItem>
             ))}
           </BreadcrumbList>
         </Breadcrumb>
@@ -48,6 +50,18 @@ export default function Page() {
           <p>Design . Full Time . 1/10 Hired</p>
         </div>
       </div>
+      <Tabs defaultValue="applicants">
+        <TabsList className="mb-6">
+          <TabsTrigger value="applicants">Applicants</TabsTrigger>
+          <TabsTrigger value="jobDetails">Job Details</TabsTrigger>
+        </TabsList>
+        <TabsContent value="applicants">
+          <Applicants />
+        </TabsContent>
+        <TabsContent value="jobDetails">
+          <JobDetail />
+        </TabsContent>
+      </Tabs>
     </>
   );
 }

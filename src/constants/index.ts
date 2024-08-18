@@ -47,3 +47,12 @@ export const JOB_LISTING_DATA = [
     needs: 10,
   },
 ];
+
+export const JOB_APPLICANT_COL: string[] = ["Name", "Applied Date"];
+
+export const JOB_APPLICANT_DATA: any[] = [
+  {
+    name: "John Portaye",
+    appliedDate: "11 Sep 2023",
+  },
+];

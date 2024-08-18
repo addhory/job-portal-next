@@ -6,8 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint-check": "next lint",
-    "lint": "next lint --fix"
+    "lint:check": "next lint",
+    "lint": "next lint --fix",
+    "prettier:check": "prettier --check .",
+    "prettier:format": "prettier --write .",
+    "check:all": "npm run lint:check && npm run prettier:check"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^43.0.0",
@@ -15,6 +18,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-radio-group": "^1.2.0",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-separator": "^1.1.0",

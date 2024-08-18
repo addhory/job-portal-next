@@ -44,7 +44,7 @@ const CustomEditor = dynamic<TCustomEditorProps>(
         Please wait
       </div>
     ),
-  }
+  },
 );
 
 export default function Page() {
