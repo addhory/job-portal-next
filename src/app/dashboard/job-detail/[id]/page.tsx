@@ -24,6 +24,7 @@ const BREADCRUMB_ITEM = [
 ];
 
 export default function Page() {
+  console.log("test");
   return (
     <>
       <div className="inline-flex flex-col gap-5 mb-5">
