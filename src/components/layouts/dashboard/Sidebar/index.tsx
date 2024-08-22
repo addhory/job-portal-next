@@ -73,13 +73,15 @@ const Sidebar = () => {
         <div className="px-3 py-2">
           <h2 className="mb-4 px-4 text-xl font-bold">Setting</h2>
           <div className="space-y-3">
-            <Button
-              variant={"ghost"}
-              className="w-full justify-start rounded-none hover:text-primary"
-            >
-              <SettingsIcon className="mr-2" />
-              Settings
-            </Button>
+            <Link href={`/dashboard/settings`} className="block">
+              <Button
+                variant={"ghost"}
+                className="w-full justify-start rounded-none hover:text-primary"
+              >
+                <SettingsIcon className="mr-2" />
+                Settings
+              </Button>
+            </Link>
             <Button
               variant={"ghost"}
               className="w-full justify-start rounded-none text-red-400 hover:text-red-500 hover:bg-red-100"

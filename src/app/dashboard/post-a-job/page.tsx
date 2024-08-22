@@ -33,6 +33,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import TitleForm from "@/components/molecules/TitleForm.tsx";
 
 const CustomEditor = dynamic<TCustomEditorProps>(
   () => import("@/components/molecules/CKEditor"),
@@ -66,10 +67,10 @@ export default function Page() {
         <ArrowLeftIcon />
         <h6 className="text-2xl font-semibold">Post a Job</h6>
       </div>
-      <div className="my-5">
-        <p className="text-lg font-semibold">Basic Information</p>
-        <p>List out your top perks and benefits</p>
-      </div>
+      <TitleForm
+        title="Basic Information"
+        subtitle="List out your top perks and benefits"
+      />
       <Separator />
       <Form {...form}>
         <form
