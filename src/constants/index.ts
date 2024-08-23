@@ -1,3 +1,4 @@
+import { TOption } from "@/types/common";
 import { EnumValues } from "zod";
 
 export const JOB_TYPES: EnumValues = [
@@ -54,5 +55,51 @@ export const JOB_APPLICANT_DATA: any[] = [
   {
     name: "John Portaye",
     appliedDate: "11 Sep 2023",
+  },
+];
+
+export const LOCATION_OPTIONS: TOption[] = [
+  {
+    label: "Indonesia",
+    value: "Indonesia",
+  },
+  {
+    label: "Singapore",
+    value: "Singapore",
+  },
+  {
+    label: "Malaysia",
+    value: "Malaysia",
+  },
+  {
+    label: "Thailand",
+    value: "Thailand",
+  },
+];
+
+export const EMPLOYEE_QTY_OPTIONS: TOption[] = [
+  {
+    label: "1-50",
+    value: "1-50",
+  },
+  {
+    label: "51-150",
+    value: "51-150",
+  },
+  {
+    label: "151-250",
+    value: "151-250",
+  },
+  {
+    label: "251-500",
+    value: "251-500",
+  },
+  {
+    label: "500-1000",
+    value: "500-1000",
+  },
+  {
+    label: "1000+",
+    value: "1000+",
   },
 ];

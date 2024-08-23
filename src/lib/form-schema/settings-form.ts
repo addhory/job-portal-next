@@ -11,7 +11,7 @@ export const overviewFormSchema = z.object({
   location: z.string({ required_error: "Location is required" }),
   employee: z.string({ required_error: "Employee is required" }),
   industry: z.string({ required_error: "Industry is required" }),
-  dateFounded: z.string({ required_error: "Date founded is required" }),
+  dateFounded: z.date({ required_error: "Date founded is required" }),
   techStack: z
     .string({ required_error: "Tech stack is required" })
     .array()

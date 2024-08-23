@@ -11,7 +11,7 @@ type Props = {
 const FieldInput = ({ children, subtitle, title }: Props) => {
   return (
     <>
-      <div className="flex flex-row items-start">
+      <div className="flex flex-row items-start gap-4">
         <div className="w-[35%]">
           <p className="font-semibold">{title}</p>
           <p className="text-gray-400 w-72 break-words">{subtitle}</p>

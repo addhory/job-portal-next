@@ -13,6 +13,7 @@ import { TCustomEditorProps } from "@/components/molecules/CKEditor";
 import FieldInput from "@/components/molecules/FieldInput";
 import InputBenefits from "@/components/molecules/InputBenefits";
 import InputSkills from "@/components/molecules/InputSkills";
+import TitleForm from "@/components/molecules/TitleForm.tsx";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -33,7 +34,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import TitleForm from "@/components/molecules/TitleForm.tsx";
 
 const CustomEditor = dynamic<TCustomEditorProps>(
   () => import("@/components/molecules/CKEditor"),
@@ -201,8 +201,11 @@ export default function Page() {
               )}
             />
           </FieldInput>
-          <FieldInput title="Required skills" subtitle="tes">
-            <InputSkills form={form} />
+          <FieldInput
+            title="Required skills"
+            subtitle="Add required skills for the job"
+          >
+            <InputSkills name="requiredSkills" label="Add Skills" form={form} />
           </FieldInput>
           <FieldInput
             title="Job Descriptions"

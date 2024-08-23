@@ -6,18 +6,18 @@ import React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 
-import { jobFormSchema } from "@/lib/form-schema";
+import { cn } from "@/lib/utils";
 
 import { FormField, FormItem, FormMessage } from "@/components/ui/form";
 
-export type TCustomEditorProps = {
-  form: UseFormReturn<z.infer<typeof jobFormSchema>>;
-  name: any;
+export type TCustomEditorProps = React.HTMLAttributes<HTMLDivElement> & {
+  form: UseFormReturn<z.infer<any>>;
+  name: string;
 };
 
-const CustomEditor = ({ form, name }: TCustomEditorProps) => {
+const CustomEditor = ({ className, form, name }: TCustomEditorProps) => {
   return (
-    <div className="block">
+    <div className={cn("block", className)}>
       <CKEditor
         editor={ClassicEditor}
         data={form.getValues(name)}

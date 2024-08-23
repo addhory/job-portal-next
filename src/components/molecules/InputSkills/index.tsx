@@ -3,7 +3,6 @@ import React, { createRef, useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 
-import { jobFormSchema } from "@/lib/form-schema";
 import { cn } from "@/lib/utils";
 
 import { Badge } from "@/components/ui/badge";
@@ -12,15 +11,18 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 type Props = {
-  form: UseFormReturn<z.infer<typeof jobFormSchema>>;
+  form: UseFormReturn<z.infer<any>>;
+  name: string;
+  label: string;
 };
 
-const InputSkills = ({ form }: Props) => {
+const InputSkills = ({ form, name, label = "" }: Props) => {
   const [isHide, setHide] = useState<boolean>(false);
   const [values, setValues] = useState<string[]>([]);
   const inputRef = createRef<HTMLInputElement>();
@@ -35,7 +37,7 @@ const InputSkills = ({ form }: Props) => {
     const newValue: any = [...values, value];
     setValues(newValue);
 
-    form.setValue("requiredSkills", newValue);
+    form.setValue(name, newValue);
 
     if (inputRef.current) {
       inputRef.current.value = "";
@@ -46,15 +48,16 @@ const InputSkills = ({ form }: Props) => {
     const newSkills: any = values.filter((value, idx) => idx !== id);
     setValues(newSkills);
 
-    form.setValue("requiredSkills", newSkills);
+    form.setValue(name, newSkills);
   };
 
   return (
     <FormField
       control={form.control}
-      name="requiredSkills"
+      name={name}
       render={() => (
         <FormItem className="block w-2/4">
+          <FormLabel className="block">{label}</FormLabel>
           <FormControl>
             <>
               <Button
@@ -67,8 +70,8 @@ const InputSkills = ({ form }: Props) => {
                   className={cn("mr-2 transition-transform", {
                     "rotate-45": isHide,
                   })}
-                />{" "}
-                Add Skills
+                />
+                {label}
               </Button>
               {isHide && (
                 <div className="my-4 flex flex-row gap-4">
