@@ -17,7 +17,7 @@ export type TCustomEditorProps = React.HTMLAttributes<HTMLDivElement> & {
 
 const CustomEditor = ({ className, form, name }: TCustomEditorProps) => {
   return (
-    <div className={cn("block", className)}>
+    <div className={cn("block prose", className)}>
       <CKEditor
         editor={ClassicEditor}
         data={form.getValues(name)}

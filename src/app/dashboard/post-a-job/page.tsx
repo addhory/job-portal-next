@@ -9,7 +9,7 @@ import { z } from "zod";
 import { jobFormSchema } from "@/lib/form-schema";
 import { JOB_TYPE_OPTIONS } from "@/constants";
 
-import { TCustomEditorProps } from "@/components/molecules/CKEditor";
+import { TCustomEditorProps } from "@/components/molecules/CustomEditor";
 import FieldInput from "@/components/molecules/FieldInput";
 import InputBenefits from "@/components/molecules/InputBenefits";
 import InputSkills from "@/components/molecules/InputSkills";
@@ -36,7 +36,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 const CustomEditor = dynamic<TCustomEditorProps>(
-  () => import("@/components/molecules/CKEditor"),
+  () => import("@/components/molecules/CustomEditor"),
   {
     ssr: false,
     loading: () => (

@@ -12,7 +12,7 @@ import { overviewFormSchema } from "@/lib/form-schema";
 import { cn } from "@/lib/utils";
 import { EMPLOYEE_QTY_OPTIONS, LOCATION_OPTIONS } from "@/constants";
 
-import type { TCustomEditorProps } from "@/components/molecules/CKEditor";
+import type { TCustomEditorProps } from "@/components/molecules/CustomEditor";
 import CustomUpload from "@/components/molecules/CustomUpload";
 import FieldInput from "@/components/molecules/FieldInput";
 import InputSkills from "@/components/molecules/InputSkills";
@@ -43,7 +43,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 const CustomEditor = dynamic<TCustomEditorProps>(
-  () => import("@/components/molecules/CKEditor"),
+  () => import("@/components/molecules/CustomEditor"),
   {
     ssr: false,
     loading: () => (
